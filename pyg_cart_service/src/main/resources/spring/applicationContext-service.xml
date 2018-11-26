@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                           http://code.alibabatech.com/schema/dubbo
+                           http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--这里是引用dubbo服务指定service需要的协议就是dubbo，还要指定dubbo的端口号-->
+    <dubbo:protocol name="dubbo" port="20887"></dubbo:protocol>
+    <!--这里需要写的是注册上传的是哪一个服务-->
+    <dubbo:application name="pyg_cart_service"/>
+    <!--这里需要写的是注册到zookeeper中，即zookeeper在虚拟机中的地址和端口号-->
+    <dubbo:registry address="zookeeper://192.168.25.128:2181"/>
+    <!--这里是扫描包即扫描注解-->
+    <dubbo:annotation package="com.pyg.cart.service.impl"/>
+
+</beans>
